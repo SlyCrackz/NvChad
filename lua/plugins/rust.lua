@@ -3,7 +3,7 @@ return {
   {
     'mrcjkb/rustaceanvim',
     version = '^5', -- Recommended
-    lazy = false,
+    lazy = false, -- already lazy
     config = function()
       local mason_registry = require('mason-registry')
       local codelldb = mason_registry.get_package('codelldb')

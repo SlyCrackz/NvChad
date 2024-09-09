@@ -6,8 +6,11 @@ local map = vim.keymap.set
 map("n", ";", ":", { desc = "CMD enter command mode" })
 map("i", "jk", "<ESC>")
 
-
-
+-- Fugitive (Git)
+map("n", "<leader>ga", "<cmd>Git add .<CR>", { desc = "Git add all changes" })
+map("n", "<leader>gc", "<cmd>Git commit<CR>", { desc = "Git commit" })
+map("n", "<leader>gp", "<cmd>Git push<CR>", { desc = "Git push" })
+map("n", "<leader>gl", "<cmd>Git pull<CR>", { desc = "Git pull" })
 
 -- Hop keybindings (define here)
 local hop = require('hop')
