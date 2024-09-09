@@ -6,6 +6,16 @@ local map = vim.keymap.set
 map("n", ";", ":", { desc = "CMD enter command mode" })
 map("i", "jk", "<ESC>")
 
+-- Harpoon keybindings (using <leader>o)
+map("n", "<leader>oa", "<cmd>lua require('harpoon.mark').add_file()<CR>", { desc = "Harpoon add file" })
+map("n", "<leader>om", "<cmd>lua require('harpoon.ui').toggle_quick_menu()<CR>", { desc = "Harpoon toggle menu" })
+map("n", "<leader>o1", "<cmd>lua require('harpoon.ui').nav_file(1)<CR>", { desc = "Navigate to file 1" })
+map("n", "<leader>o2", "<cmd>lua require('harpoon.ui').nav_file(2)<CR>", { desc = "Navigate to file 2" })
+map("n", "<leader>o3", "<cmd>lua require('harpoon.ui').nav_file(3)<CR>", { desc = "Navigate to file 3" })
+map("n", "<leader>o4", "<cmd>lua require('harpoon.ui').nav_file(4)<CR>", { desc = "Navigate to file 4" })
+map("n", "<leader>on", "<cmd>lua require('harpoon.ui').nav_next()<CR>", { desc = "Navigate to next file" })
+map("n", "<leader>op", "<cmd>lua require('harpoon.ui').nav_prev()<CR>", { desc = "Navigate to previous file" })
+
 -- Fugitive (Git)
 map("n", "<leader>ga", "<cmd>Git add .<CR>", { desc = "Git add all changes" })
 map("n", "<leader>gc", "<cmd>Git commit<CR>", { desc = "Git commit" })
