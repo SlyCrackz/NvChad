@@ -22,6 +22,9 @@ map("n", "<leader>gc", "<cmd>Git commit<CR>", { desc = "Git commit" })
 map("n", "<leader>gp", "<cmd>Git push<CR>", { desc = "Git push" })
 map("n", "<leader>gl", "<cmd>Git pull<CR>", { desc = "Git pull" })
 
+-- Lazygit (Git)
+map("n", "<leader>gg", "<cmd>LazyGit<CR>", { desc = "Git open Lazygit" })
+
 -- Hop keybindings (define here)
 local hop = require('hop')
 local directions = require('hop.hint').HintDirection
@@ -57,22 +60,37 @@ map("n", "<C-j>", "<cmd> TmuxNavigateDown<CR>", { desc = "Navigator down" })
 map("n", "<C-k>", "<cmd> TmuxNavigateUp<CR>", { desc = "Navigator up" })
 map("n", "<C-l>", "<cmd> TmuxNavigateRight<CR>", { desc = "Navigator right" })
 
--- Nvim DAP
+
+-- DAP Key Mappings
 map("n", "<Leader>dl", "<cmd>lua require'dap'.step_into()<CR>", { desc = "Debugger step into" })
 map("n", "<Leader>dj", "<cmd>lua require'dap'.step_over()<CR>", { desc = "Debugger step over" })
 map("n", "<Leader>dk", "<cmd>lua require'dap'.step_out()<CR>", { desc = "Debugger step out" })
-map("n", "<Leader>dc>", "<cmd>lua require'dap'.continue()<CR>", { desc = "Debugger continue" })
+map("n", "<Leader>dc", "<cmd>lua require'dap'.continue()<CR>", { desc = "Debugger continue" })
 map("n", "<Leader>db", "<cmd>lua require'dap'.toggle_breakpoint()<CR>", { desc = "Debugger toggle breakpoint" })
-map(
-	"n",
-	"<Leader>dd",
-	"<cmd>lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>",
-	{ desc = "Debugger set conditional breakpoint" }
-)
-map("n", "<Leader>de", "<cmd>lua require'dap'.terminate()<CR>", { desc = "Debugger reset" })
+map("n", "<Leader>dd", "<cmd>lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>", { desc = "Debugger set conditional breakpoint" })
+map("n", "<Leader>de", "<cmd>lua require'dap'.terminate()<CR>", { desc = "Debugger terminate" })
 map("n", "<Leader>dr", "<cmd>lua require'dap'.run_last()<CR>", { desc = "Debugger run last" })
-
+map("n", "<Leader>dui", "<cmd>lua require'dapui'.toggle()<CR>", { desc = "Toggle DAP UI" })
+map("v", "<Leader>dh", "<cmd>lua require'dapui'.eval()<CR>", { desc = "Evaluate expression" }) -- Visual mode to evaluate expressions
 -- rustaceanvim
 map("n", "<Leader>dt", "<cmd>lua vim.cmd('RustLsp testables')<CR>", { desc = "Debugger Rustlsp testables" })
+-- Rust Debugging Keybindings with Leader 'd' (RustLsp specific)
+map("n", "<Leader>dk", "<cmd>RustLsp debug<CR>", { desc = "RustLsp Debug target at cursor" })
+map("n", "<Leader>dp", "<cmd>RustLsp debuggables<CR>", { desc = "RustLsp Select Debuggable" })
+-- RustLsp Run Key Mappings (Non-Clashing with Existing DAP Mappings)
+map("n", "<Leader>rc", "<cmd>RustLsp run<CR>", { desc = "RustLsp Run target at cursor" })
+map("n", "<Leader>rr", "<cmd>RustLsp runnables<CR>", { desc = "RustLsp Select Runnable" })
+map("n", "<Leader>rrp", "<cmd>RustLsp runnables!<CR>", { desc = "Rerun Last Runnable" })
+-- RustLsp Hover Actions Key Mappings
+map("n", "<Leader>ra", "<cmd>RustLsp hover actions<CR>", { desc = "RustLsp Hover Actions" })
+map("n", "<Leader>re", "<cmd>RustLsp explainError<CR>", { desc = "RustLsp Explain Error" })
+map("n", "<Leader>rec", "<cmd>RustLsp explainError current<CR>", { desc = "Explain Current Error" })
+map("n", "<Leader>rec", "<cmd>RustLsp explainError cycle<CR>", { desc = "Cycle Error Explanations" })
+map("n", "<Leader>rdn", "<cmd>lua vim.diagnostic.goto_next()<CR>", { desc = "Go to next diagnostic" })
+map("n", "<Leader>rdp", "<cmd>lua vim.diagnostic.goto_prev()<CR>", { desc = "Go to previous diagnostic" })
+-- RustLsp Open Documentation and Cargo Mappings
+map("n", "<Leader>rod", "<cmd>RustLsp openDocs<CR>", { desc = "RustLsp Open Documentation" })
+map("n", "<Leader>roc", "<cmd>RustLsp openCargo<CR>", { desc = "RustLsp Open Cargo.toml" })
+
 
 -- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
