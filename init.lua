@@ -25,6 +25,27 @@ require("lazy").setup({
   { import = "plugins" },
 }, lazy_config)
 
+-- gitsigns
+require('gitsigns').setup {
+  signs = {
+    add = { text = '+' },
+    change = { text = '~' },
+    delete = { text = '_' },
+  },
+  current_line_blame = true, -- Optional: Shows inline Git blame on the current line
+}
+
+-- Define highlights for GitSigns
+vim.api.nvim_set_hl(0, 'GitSignsAdd', { link = 'GitGutterAdd' })
+vim.api.nvim_set_hl(0, 'GitSignsAddNr', { link = 'GitGutterAdd' })
+vim.api.nvim_set_hl(0, 'GitSignsChange', { link = 'GitGutterChange' })
+vim.api.nvim_set_hl(0, 'GitSignsChangeNr', { link = 'GitGutterChange' })
+vim.api.nvim_set_hl(0, 'GitSignsDelete', { link = 'GitGutterDelete' })
+vim.api.nvim_set_hl(0, 'GitSignsDeleteNr', { link = 'GitGutterDelete' })
+
+
+
+
 -- load theme
 dofile(vim.g.base46_cache .. "defaults")
 dofile(vim.g.base46_cache .. "statusline")
